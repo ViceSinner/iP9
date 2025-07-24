@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Vice Sinner - iP9</title>
+
+    <style>
+        /* Estilos generales (sin cambios) */
+        .nav__logo { color: #FFFFFF; font-size: 1.5rem; text-decoration: none; }
+        .home__button, .model__button { background-color: #25D366; color: #FFFFFF; border: 1px solid #1EBE5A; display: flex; justify-content: center; align-items: center; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold; gap: 0.5rem; width: fit-content; margin: 1.5rem auto; transition: background-color 0.3s ease; }
+        .home__button:hover, .model__button:hover { background-color: #1EBE5A; }
+        .home__button i.ri-whatsapp-fill, .model__button i.ri-whatsapp-fill { color: #FFFFFF; font-size: 1.25rem; }
+        .about__description { text-align: justify; }
+        .model__specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; margin-bottom: 3rem; padding: 0 1rem; }
+        .model__spec-card { background-color: var(--container-color); padding: 1.5rem; border-radius: 1rem; text-align: center; box-shadow: 0 4px 12px hsla(206, 4%, 4%, .1); transition: transform .3s ease; }
+        .model__spec-card:hover { transform: translateY(-.5rem); }
+        .model__spec-card i { font-size: 2.5rem; color: var(--first-color); margin-bottom: 1rem; display: block; }
+        .model__spec-card-title { font-size: 1.25rem; margin-bottom: .5rem; color: var(--title-color); }
+        .model__spec-card-description { font-size: .938rem; line-height: 1.6; color: var(--text-color); text-align: justify; }
+        
+        .footer__container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+            padding: 0.5rem 0; 
+            position: relative; 
+        }
+        .footer__logo { cursor: pointer; display: inline-block; vertical-align: middle; }
+        .footer__logo img { max-width: 120px; height: auto; display: block; }
+        .footer__social { 
+            display: flex; 
+            justify-content: center; 
+            gap: 1rem; 
+            margin-top: 1.5rem; 
+            margin-bottom: 0; 
+        }
+        .footer__copy { 
+            text-align: center; 
+            display: block; 
+            width: 100%; 
+            margin-top: 0; 
+        }
+        
+        /* Estilo para el nombre del autor */
+        .footer__author-name {
+            font-style: italic; /* Para ponerlo en cursiva */
+            font-size: 0.9rem; /* Un tamaño ligeramente más pequeño que el copyright */
+            color: var(--text-color); /* Utiliza el color de texto general */
+            margin-top: 0.2rem; /* Pequeño margen superior para separarlo del copyright */
+            display: block; /* Para que ocupe su propia línea */
+        }
+        
+        /* *************** CAMBIO CLAVE AQUÍ *************** */
+        .footer__author-name a { 
+            color: inherit; /* **Hereda el color del padre (que será el color de texto general) para que no sea azul** */
+            text-decoration: none; /* Elimina el subrayado por defecto */
+        }
+        .footer__author-name a:hover {
+            text-decoration: underline; /* Añade un subrayado solo al pasar el mouse */
+        }
+        /* ************************************************* */
+
+        /* Ajuste para que el grupo del logo y texto pueda contenerlo todo */
+        .footer__logo-group {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: auto; 
+            margin-bottom: 0.5rem; 
+            padding-top: 10px; 
+        }
+
+        /* ===== CSS para el texto único debajo del logo ===== */
+        .footer__brand-text-center {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem; 
+            color: var(--title-color, #333);
+            font-weight: 700;
+            white-space: nowrap;
+            opacity: 0; 
+            position: absolute;
+            top: 100%; 
+            left: 50%;
+            transform: translate(-50%, 20px); 
+            transition: opacity 0.5s ease-in-out; 
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Clase que se añade con JS para hacer visible el texto */
+        .footer__brand-text-center.show {
+            opacity: 1; 
+        }
+
+        /* Media query para móviles */
+        @media screen and (max-width: 768px) {
+            .footer__brand-text-center {
+                font-size: 1.2rem; 
+                transform: translate(-50%, 15px); 
+            }
+            .footer__logo img {
+                max-width: 80px; 
+            }
+        }
+
+        /* Media query adicional para pantallas aún más pequeñas */
+        @media screen and (max-width: 480px) {
+            .footer__brand-text-center {
+                font-size: 0.9rem; 
+                transform: translate(-50%, 10px);
+            }
+            .footer__logo img {
+                max-width: 60px; 
+            }
+        }
+
+        /* Nuevo estilo para bajar el botón "Comprar Ahora" */
+        .home__button {
+            margin-top: 2.5rem; /* Ajusta este valor según cuánto espacio quieras agregar */
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="nav__logo">VICE SINNER</a>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#home" class="nav__link active-link">Inicio</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">Acerca de</a></li>
+                    <li class="nav__item"><a href="#favorite" class="nav__link">Modelos</a></li>
+                    <li class="nav__item"><a href="#model" class="nav__link">Especificaciones</a></li>
+                </ul>
+                <div class="nav__close" id="nav-close"><i class="ri-close-line"></i></div>
+            </div>
+            <div class="nav__toggle" id="nav-toggle"><i class="ri-menu-line"></i></div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="home section" id="home">
+            <div class="home__container container grid">
+                <div class="home__content">
+                    <img src="assets/img/home-img.png" alt="Imagen de inicio" class="home__img">
+                    <h1 class="home__title"><span>i</span><span>P</span><span>9</span></h1>
+                    <div class="home__tooltip">
+                        <img src="assets/img/tooltip-right.svg" alt="Información de inicio" class="home__tooltip-img">
+                        <span class="home__tooltip-text">$9,99</span>
+                    </div>
+                </div>
+                <a href="https://wa.me/584126551325?text=Quiero%20obtener%20mis%20iP9%20al%20mejor%20precio%20🎧" class="home__button button" target="_blank">
+                    Comprar Ahora <i class="ri-whatsapp-fill"></i>
+                </a>
+                <div class="home__social">
+                    <span class="home__social-text">¡Sígueme!</span>
+                    <div class="home__social-links">
+                        <a href="https://www.instagram.com/vicesinner.mcbo?igsh=OW9tbmtxYnNzNnVo" target="_blank" class="home__social-link"><i class="ri-instagram-fill"></i></a>
+                        <a href="https://www.facebook.com/share/14Lh6PbqRj7/" target="_blank" class="home__social-link"><i class="ri-facebook-circle-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="about section" id="about">
+            <div class="about__container container grid">
+                <div class="about__data">
+                    <h2 class="section__title">Acerca de</h2>
+                    <p class="about__description">Imagina disfrutar de tu música favorita con una claridad impresionante y bajos profundos que te harán vibrar, todo sin la molestia de los cables. Gracias a su conectividad inalámbrica avanzada, los iP9 te brindan la libertad de moverte sin restricciones, ya sea que estés haciendo ejercicio, trabajando o simplemente relajándote.</p>
+                    <a href="#model" class="button">Saber Más <i class="ri-information-fill"></i></a>
+                </div>
+                <img src="assets/img/about-img.png" alt="Imagen de acerca de" class="about__img">
+            </div>
+        </section>
+        <section class="favorite section" id="favorite">
+            <h2 class="section__title">ELIGE TU MODELO FAVORITO</h2>
+            <div class="favorite__container">
+                <div class="favorite__swiper swiper">
+                    <div class="swiper-wrapper">
+                        <article class="favorite__article swiper-slide"><img src="assets/img/favorite-1.png" alt="Imagen de modelo favorito" class="favorite__img"><span class="favorite__model">Modelo Negro</span></article>
+                        <article class="favorite__article swiper-slide"><img src="assets/img/favorite-2.png" alt="Imagen de modelo favorito" class="favorite__img"><span class="favorite__model">Modelo Blanco</span></article>
+                        <article class="favorite__article swiper-slide"><img src="assets/img/favorite-3.png" alt="Imagen de modelo favorito" class="favorite__img"><span class="favorite__model">Modelo Azul</span></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="model section" id="model">
+            <h2 class="section__title">ESPECIFICACIONES DEL MODELO</h2>
+            <div class="model__container container">
+                <div class="model__specs-grid">
+                    <div class="model__spec-card"><i class="ri-bluetooth-line"></i><h3 class="model__spec-card-title">Conectividad Avanzada</h3><p class="model__spec-card-description">Equipados con Bluetooth 5.0, los iP9 garantizan una conexión inalámbrica ultra estable, rápida y con una latencia mínima, ideal para disfrutar de tu contenido sin interrupciones.</p></div>
+                    <div class="model__spec-card"><i class="ri-battery-fill"></i><h3 class="model__spec-card-title">Batería</h3><p class="model__spec-card-description">Disfruta de hasta 4 horas de reproducción continua con una sola carga. Si los usas en lapsos continuos podrías llegar a 8 - 10 horas.</p></div>
+                    <div class="model__spec-card"><i class="ri-headphone-line"></i><h3 class="model__spec-card-title">Audio Inmersivo</h3><p class="model__spec-card-description">Sumérgete en un sonido de alta fidelidad con bajos profundos y agudos claros. La cancelación de ruido pasiva te aísla del entorno para una experiencia auditiva pura.</p></div>
+                    <div class="model__spec-card"><i class="ri-mic-line"></i><h3 class="model__spec-card-title">Llamadas Claras</h3><p class="model__spec-card-description">El micrófono integrado con tecnología de reducción de ruido garantiza que tus llamadas sean nítidas y sin distorsiones, incluso en ambientes ruidosos.</p></div>
+                    <div class="model__spec-card"><i class="ri-headphone-line"></i><h3 class="model__spec-card-title">Comodidad Superior</h3><p class="model__spec-card-description">Experimenta una comodidad inigualable con las almohadillas ergonómicas de los iP9. Han sido diseñadas meticulosamente para un ajuste perfecto, adaptándose suavemente a la forma de tu oído.</p></div>
+                    <div class="model__spec-card"><i class="ri-drizzle-line"></i><h3 class="model__spec-card-title">Diseño Resistente</h3><p class="model__spec-card-description">Su resistencia al sudor y salpicaduras (certificación IPX4) los hace perfectos para tus entrenamientos y actividades al aire libre, sin preocuparte por el clima.</p></div>
+                </div>
+                <a href="https://wa.me/584126551325?text=Quiero%20obtener%20mis%20iP9%20al%20mejor%20precio%20🎧" class="model__button button" target="_blank">Comprar Ahora <i class="ri-whatsapp-fill"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container container">
+            <div class="footer__logo-group">
+                <div class="footer__logo" id="footerLogo">
+                    <img src="assets/img/logo.png" alt="Logo de la marca">
+                </div>
+                <span class="footer__brand-text-center" id="footerBrandTextCenter">VICE SINNER</span>
+            </div>
+            <div class="footer__social">
+                <a href="https://www.instagram.com/vicesinner.mcbo?igsh=OW9tbmtxYnNzNnVo" target="_blank" class="footer__social-link"><i class="ri-instagram-fill"></i></a>
+                <a href="https://www.facebook.com/share/14Lh6PbqRj7/" target="_blank" class="footer__social-link"><i class="ri-facebook-circle-fill"></i></a>
+            </div>
+            <span class="footer__copy">© Todos los Derechos Reservados - Vice Sinner</span>
+            <span class="footer__author-name">Diseñado por <a href="https://www.facebook.com/luis.diaz.774617" target="_blank" rel="noopener noreferrer">Luis Díaz</a></span>
+        </div>
+    </footer>
+
+    <a href="#" class="scrollup" id="scroll-up"><i class="ri-arrow-up-s-line"></i></a>
+
+    <script src="assets/js/scrollreveal.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const footerLogo = document.getElementById('footerLogo');
+            const footerBrandTextCenter = document.getElementById('footerBrandTextCenter');
+            let hideTimeout;
+
+            if (footerLogo && footerBrandTextCenter) {
+                footerLogo.addEventListener('click', () => {
+                    clearTimeout(hideTimeout);
+
+                    footerBrandTextCenter.classList.add('show');
+
+                    hideTimeout = setTimeout(() => {
+                        footerBrandTextCenter.classList.remove('show');
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
