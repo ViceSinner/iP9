@@ -17,7 +17,11 @@
 
     <style>
         /* Estilos generales (sin cambios) */
-        .nav__logo { color: #FFFFFF; font-size: 1.5rem; text-decoration: none; }
+        .nav__logo {
+            color: #FFFFFF;
+            font-size: 2.5rem; /* Se mantiene en 2.5rem */
+            text-decoration: none;
+        }
         .home__button, .model__button { background-color: #25D366; color: #FFFFFF; border: 1px solid #1EBE5A; display: flex; justify-content: center; align-items: center; padding: 0.75rem 1.5rem; border-radius: 0.5rem; text-decoration: none; font-weight: bold; gap: 0.5rem; width: fit-content; margin: 1.5rem auto; transition: background-color 0.3s ease; }
         .home__button:hover, .model__button:hover { background-color: #1EBE5A; }
         .home__button i.ri-whatsapp-fill, .model__button i.ri-whatsapp-fill { color: #FFFFFF; font-size: 1.25rem; }
@@ -62,15 +66,13 @@
             display: block; /* Para que ocupe su propia línea */
         }
         
-        /* *************** CAMBIO CLAVE AQUÍ *************** */
         .footer__author-name a { 
-            color: inherit; /* **Hereda el color del padre (que será el color de texto general) para que no sea azul** */
+            color: inherit; /* Hereda el color del padre (que será el color de texto general) para que no sea azul */
             text-decoration: none; /* Elimina el subrayado por defecto */
         }
         .footer__author-name a:hover {
             text-decoration: underline; /* Añade un subrayado solo al pasar el mouse */
         }
-        /* ************************************************* */
 
         /* Ajuste para que el grupo del logo y texto pueda contenerlo todo */
         .footer__logo-group {
@@ -84,11 +86,11 @@
             padding-top: 10px; 
         }
 
-        /* ===== CSS para el texto único debajo del logo ===== */
+        /* ===== CSS para el texto único debajo del logo (VICE SINNER en la animación) ===== */
         .footer__brand-text-center {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem; 
-            color: var(--title-color, #333);
+            font-size: 2.8rem;
+            color: #FFFFFF; /* Cambiado a blanco puro para mayor visibilidad */
             font-weight: 700;
             white-space: nowrap;
             opacity: 0; 
@@ -109,7 +111,7 @@
         /* Media query para móviles */
         @media screen and (max-width: 768px) {
             .footer__brand-text-center {
-                font-size: 1.2rem; 
+                font-size: 1.8rem;
                 transform: translate(-50%, 15px); 
             }
             .footer__logo img {
@@ -120,7 +122,7 @@
         /* Media query adicional para pantallas aún más pequeñas */
         @media screen and (max-width: 480px) {
             .footer__brand-text-center {
-                font-size: 0.9rem; 
+                font-size: 1.2rem;
                 transform: translate(-50%, 10px);
             }
             .footer__logo img {
